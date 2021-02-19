@@ -62,7 +62,6 @@ def read_CardData():
                 elif tr.find('th').get_text() == 'テキスト':
                     data['ability'] = tr.find('td').get_text()
                 elif tr.find('th').get_text() == 'フレーバー':
-                    print(tr.find('td'))
                     data['dialogue'] = tr.find('td').get_text()
 
             elif th_count is 2 and td_count is 2:
@@ -102,21 +101,21 @@ def read_CardData():
                 elif th_all[1].get_text() == 'パワー':
                     data['power'] = td_all[1].get_text()
                 elif th_all[1].get_text() == 'トリガー':
-                    print(td_all[1])
-                    data['trigger'] = td_all[1].get_text()
+                    imgs = td_all[1].find_all('img')
 
+                    if len(imgs) == 1:
+                        data['trigger'] = imgs[0]['src'][50:-4]
+                    else:
+                        data['trigger'] = imgs[0]['src'][50:-4] + "," + imgs[1]['src'][50:-4]
 
             elif th_count is 1 and td_count is 2:
                 cnt3 += 1
                 data['img_url'] = tr.find('img')['src']
                 data['card_name'] = tr.find_all('td')[1].get_text()
 
-        if cnt1 + cnt2 + cnt3 is tr_count:
-            print('true')
-        else:
-            print('false')
 
-        #print(card)
+        print(data)
+
 
 if __name__ == '__main__':
     read_CardData()
