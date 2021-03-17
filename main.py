@@ -4,7 +4,7 @@ import requests as req
 from bs4 import BeautifulSoup as bts
 import json
 
-url = 'https://ws-tcg.com/cardlist/?cardno=RZ/S46-068'
+url = 'https://ws-tcg.com/cardlist/?cardno=BD/W73-105'
 
 papago = 'https://papago.naver.com/?sk=ja&tk=ko&hn=0&st='
 
@@ -105,6 +105,8 @@ def read_CardData():
 
                     if len(imgs) == 1:
                         data['trigger'] = imgs[0]['src'][50:-4]
+                    elif imgs == []:
+                        data['trigger'] = '-'
                     else:
                         data['trigger'] = imgs[0]['src'][50:-4] + "," + imgs[1]['src'][50:-4]
 
