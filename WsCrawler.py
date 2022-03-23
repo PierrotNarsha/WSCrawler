@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup as bts
 class WsCrawler:
 
     def __init__(self):
-        self.base_url = 'https://ws-tcg.com/cardlist/?cardno=BD/'
+        self.base_url = 'https://ws-tcg.com/cardlist/?cardno={0}/{1}'
         self.data = {'img_url': '',
                 'card_name': '',
                 'card_no': '',
@@ -25,8 +25,8 @@ class WsCrawler:
                 'ability': '',
                 'dialogue': ''}
 
-    def read_CardData(self, card_no):
-        response = req.get(self.base_url + card_no)
+    def read_CardData(self, title_code, card_no):
+        response = req.get(str.format(self.base_url, title_code, card_no))
 
         tmp_data = self.data
 
