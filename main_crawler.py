@@ -1,13 +1,18 @@
 #112.164.99.250
 
 from WsCrawler import WsCrawler
+from pymongo import MongoClient
 import json
 
-card_no = 'WE36-44'
+client = MongoClient("mongodb://")
+
+title_code = 'SW'
+pack_no = ['s49']
 
 if __name__ == '__main__':
     wc = WsCrawler()
 
-    data = wc.read_CardData(title_code='HOL', card_no=card_no)
-    print(data)
+    for pack_index in range(0, len(pack_no)):
+        data = wc.read_CardData(title_code=title_code, pack_no=pack_no[0])
+        print(data)
 
