@@ -7,7 +7,8 @@ from bs4 import BeautifulSoup as bts
 class WsCrawler:
 
     def __init__(self):
-        self.base_url = 'https://ws-tcg.com/cardlist/?cardno={0}/{1}-{2}'
+        # self.base_url = 'https://ws-tcg.com/cardlist/?cardno={0}/{1}-{2}'
+        self.base_url = 'https://ws-tcg.com/cardlist/?cardno=sw/s49-001'
         self.card_list = []
 
     def read_CardData(self, title_code, pack_no):
@@ -128,5 +129,5 @@ class WsCrawler:
                 print(data)
             else:
                 break
-
+        print(self.card_list)
         return self.card_list
