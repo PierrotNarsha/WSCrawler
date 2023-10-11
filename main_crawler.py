@@ -4,7 +4,7 @@ from WsCrawler import WsCrawler
 from pymongo import MongoClient
 import json
 
-client = MongoClient("mongodb://")
+# client = MongoClient("mongodb://")
 
 title_code = 'SW'
 pack_no = ['s49']

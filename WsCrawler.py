@@ -8,7 +8,7 @@ class WsCrawler:
 
     def __init__(self):
         # self.base_url = 'https://ws-tcg.com/cardlist/?cardno={0}/{1}-{2}'
-        self.base_url = 'https://ws-tcg.com/cardlist/?cardno=sw/s49-001'
+        self.base_url = 'https://ws-tcg.com/cardlist/?cardno='
         self.card_list = []
 
     def read_CardData(self, title_code, pack_no):
@@ -33,7 +33,7 @@ class WsCrawler:
                     'ability': '',
                     'dialogue': ''}
 
-            card_url = str.format(self.base_url, title_code, pack_no, str(card_no).zfill(3))
+            card_url = self.base_url + title_code + '/' + pack_no + '-' + str(card_no).zfill(3)
             print(card_url)
 
             response = req.get(card_url)
@@ -131,3 +131,4 @@ class WsCrawler:
                 break
         print(self.card_list)
         return self.card_list
+
